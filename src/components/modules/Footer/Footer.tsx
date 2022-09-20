@@ -11,22 +11,10 @@ const Footer = () => {
   return (
     <Box textAlign={'center'} w="full" p={6}>
       <Text>
-        ⭐️ Please star this{' '}
+        ⭐️ UI made with <Link href={links.moralis} isExternal alignItems={'center'}> Moralis SDK <ExternalLinkIcon />
+        </Link> and {' '}
         <Link href={links.github} isExternal alignItems={'center'}>
-          boilerplate <ExternalLinkIcon />
-        </Link>
-        , every star makes us very happy!
-      </Text>
-      <Text>
-        🙋 You have questions? Ask them on the{' '}
-        <Link href={links.forum} isExternal alignItems={'center'}>
-          Moralis forum <ExternalLinkIcon />
-        </Link>
-      </Text>
-      <Text>
-        📖 Read more about{' '}
-        <Link href={links.moralis} isExternal alignItems={'center'}>
-          Moralis <ExternalLinkIcon />
+         Web3 boilerplate <ExternalLinkIcon />
         </Link>
       </Text>
     </Box>

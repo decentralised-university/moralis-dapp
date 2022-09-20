@@ -4,6 +4,8 @@ import { extendTheme } from '@chakra-ui/react';
 import { publicProvider } from 'wagmi/providers/public';
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
+import '../styles/globals.css';
+
 
 const { provider, webSocketProvider } = configureChains(defaultChains, [publicProvider()]);
 
