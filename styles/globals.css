@@ -30,3 +30,15 @@ a {
   height: 100px;
   object-fit: contain;
 }
+
+.unlock-content {
+  display: block;
+}
+
+.unlock-content .locked {
+  display: none;
+}
+
+.unlock-content .unlocked {
+  display: none;
+}

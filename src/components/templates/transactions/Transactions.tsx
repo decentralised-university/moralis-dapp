@@ -15,6 +15,7 @@ import { FC, useEffect } from 'react';
 import { getEllipsisTxt } from 'utils/format';
 import { ITransactions } from './types';
 
+
 const Transactions: FC<ITransactions> = ({ transactions }) => {
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
 

@@ -4,6 +4,7 @@ import { Learning } from 'components/templates/learning';
 // import { getSession } from 'next-auth/react';
 import { ITransactions, Transactions } from 'components/templates/transactions';
 import Moralis from 'moralis';
+import { NextPage } from 'next/types';
 
 const LearningPage: NextPage<ITransactions> = (props) => {
     return (
