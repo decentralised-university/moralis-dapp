@@ -2,7 +2,14 @@
 
 This application is built using the awesome ethereum-boilerplate!
 
-# `ethereum-boilerplate`
+### Your Wallet
+
+View all transactions and balances for ERC20 and ERC721 (NFTs) tokens in the connected wallet.
+
+
+
+
+## `ethereum-boilerplate`
 
 🚀DEMO: https://eth-boilerplate.vercel.app/
 
