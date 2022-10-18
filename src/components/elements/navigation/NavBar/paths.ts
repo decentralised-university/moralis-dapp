@@ -46,7 +46,7 @@ const NAV_LINKS: ISubNav[] = [
   },
   {
     label: 'DAO',
-    href: '/DAO',
+    href: '/dao',
   }
 ];
 
