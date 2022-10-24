@@ -14,6 +14,7 @@ import {
   import { useWeb3Transfer } from 'react-moralis';
   import Moralis from 'moralis';
 import { IDao } from './types';
+import DaoHome from './DaoHome';
 
 const Dao: FC<IDao> = ({  }) => {
     useEffect(() => console.log('dao: ', Dao), [Dao]);
@@ -27,6 +28,7 @@ const Dao: FC<IDao> = ({  }) => {
         <Heading size="3xl" marginBottom={8}> 
           DAO Homepage
         </Heading>
+        <DaoHome />
         <Grid
             // h='800px'
             // w='max'
