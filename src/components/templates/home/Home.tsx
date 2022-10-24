@@ -38,7 +38,7 @@ const Home = () => {
         templateColumns='repeat(2, 1fr)'
         gap={10}
       >
-        <GridItem colSpan={1} bgGradient={boxGradient} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg'>
+        <GridItem colSpan={2} bgGradient={boxGradient} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg'>
           <Box p={5}>
             <Heading size="lg">
               Get the DU Access Pass!
@@ -51,6 +51,7 @@ const Home = () => {
             </Square>
           </Box>
         </GridItem>
+{/* 
         <GridItem colSpan={1} bgGradient={boxGradient} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg'>
           <Box p={5}>
             <Heading size="lg">
@@ -63,7 +64,8 @@ const Home = () => {
               <Button colorScheme="purple" _hover={{ bg: 'orange'}} size="lg">Claim Points</Button>
             </Square>
           </Box>
-        </GridItem>
+        </GridItem> */}
+
       </Grid>
       </>
   );
