@@ -15,9 +15,9 @@ function Protected({ }) {
 
     return (
         <Default pageName="protected">
-            <Box mb={6}>
-                <Heading size={"2xl"} mb={"8"}>Protected content</Heading>
-                <Heading size={"xl"}>Nice! You have the Access Pass! This is exclusive content!</Heading>
+            <Box mb={16}>
+                <Heading size={"2xl"} mb={"8"}>Exclusive content</Heading>
+                <Heading size={"md"}>Nice, you have the Access Pass! This content can only be accessed by holding the NFT Access Pass!</Heading>
             </Box>
 
             <Grid
