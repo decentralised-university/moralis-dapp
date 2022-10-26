@@ -1,6 +1,9 @@
 import { CheckCircleIcon, SettingsIcon } from '@chakra-ui/icons';
 import { Heading, Stack, Box, Text, Grid, GridItem, Button, useColorModeValue, Square } from '@chakra-ui/react';
 import { MintNFT } from 'components/modules/MintNFT';
+import Moralis from 'moralis';
+import { EvmChain } from '@moralisweb3/evm-utils';
+import { getSession } from 'next-auth/react';
 
 const Home = () => {
   const bgGridItem = useColorModeValue('yellow.100', 'red.100')
@@ -9,7 +12,7 @@ const Home = () => {
   const boxGradient = useColorModeValue('linear(to-br, gray.200, white)','linear(to-br, gray.900, gray.600)')
   const boxColor = useColorModeValue('red.100','red.900')
   const textGradient = useColorModeValue('linear(to-br, gray.600, gray.900)','linear(to-br, gray.100, gray.300)')
-
+  
   return (
       <>
       <Heading 
@@ -70,5 +73,36 @@ const Home = () => {
       </>
   );
 };
+
+
+export async function getServerSideProps(context: any) {
+  const session = await getSession(context);
+
+  if (!session) {
+      return {
+          redirect: {
+              destination: '/',
+              permanent: false,
+          },
+      };
+  }
+
+  await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
+
+  const nftList = await Moralis.EvmApi.nft.getWalletNFTs({
+      chain: EvmChain.GOERLI,
+      address: session.user.address,
+      tokenAddress: '0x4f2F874eb70E7B9406CCcDf1070eC7c757fe2381',
+  })
+
+  if ( nftList.raw.total > 0 ) {
+      return { 
+          redirect: {
+              destination: '/protected',
+              permanent: false,
+          },
+      };
+  }
+}
 
 export default Home;

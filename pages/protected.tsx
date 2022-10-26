@@ -45,8 +45,8 @@ function Protected({ }) {
     );
 }
 
-export async function getServerSideProps(context: GetSessionParams | undefined) {
-    const session = await getSession(context);
+export async function getServerSideProps(context: any) {
+    const session = await getSession(context); 
 
     if (!session) {
         return {
