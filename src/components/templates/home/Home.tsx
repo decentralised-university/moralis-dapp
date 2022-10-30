@@ -1,18 +1,19 @@
-import { CheckCircleIcon, SettingsIcon } from '@chakra-ui/icons';
-import { Heading, Stack, Box, Text, Grid, GridItem, Button, useColorModeValue, Square } from '@chakra-ui/react';
+import { CheckCircleIcon, Icon, SettingsIcon } from '@chakra-ui/icons';
+import { Heading, Stack, Box, Text, Grid, GridItem, Button, useColorModeValue, Square, Circle, border } from '@chakra-ui/react';
 import { MintNFT } from 'components/modules/MintNFT';
 import Moralis from 'moralis';
 import { EvmChain } from '@moralisweb3/evm-utils';
 import { getSession } from 'next-auth/react';
+import { ClaimPoints } from 'components/modules/ClaimPoints';
+import { RiNumber1, RiNumber2 } from 'react-icons/ri';
 
-const Home = () => {
-  const bgGridItem = useColorModeValue('yellow.100', 'red.100')
+const Home = ( hasNFT: boolean ) => {
+  const address = '0x6d818827046A47db24E08d0E7799E21E384901c4';
   const color = useColorModeValue('gray', 'gray')
   const borderColor = useColorModeValue('gray.200', 'gray.700')
   const boxGradient = useColorModeValue('linear(to-br, gray.200, white)','linear(to-br, gray.900, gray.600)')
-  const boxColor = useColorModeValue('red.100','red.900')
   const textGradient = useColorModeValue('linear(to-br, gray.600, gray.900)','linear(to-br, gray.100, gray.300)')
-  
+
   return (
       <>
       <Heading 
@@ -41,12 +42,19 @@ const Home = () => {
         templateColumns='repeat(2, 1fr)'
         gap={10}
       >
-        <GridItem colSpan={2} bgGradient={boxGradient} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg'>
-          <Box p={5}>
+        <GridItem colSpan={1} bgGradient={boxGradient} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg'>
+          <Box p={10}>
+            <Heading size='xl'>
+              <Square>
+                <Circle h='60px' w='60px' mb={5} borderColor={borderColor} bgColor={borderColor} borderRadius="50%" shadow='base'>
+                  <Icon as={ RiNumber1 } color={textGradient} size={'xl'} />
+                </Circle>
+              </Square>
+            </Heading>
             <Heading size="lg">
               Get the DU Access Pass!
             </Heading>
-            <Text mt={4} mb={12} fontSize='lg'>
+            <Text minH={'150px'} mt={4} fontSize='lg'>
               Get access to exclusive content by purchasing the Decentralised University Access Pass!
             </Text>
             <Square >
@@ -54,21 +62,26 @@ const Home = () => {
             </Square>
           </Box>
         </GridItem>
-{/* 
-        <GridItem colSpan={1} bgGradient={boxGradient} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg'>
-          <Box p={5}>
-            <Heading size="lg">
-              Claim your first DU Points!
-            </Heading>
-            <Text mt={4} mb={8} fontSize='lg'>
-              You can earn more points by contributing to the University community, by supporting others with helpful posts and comments in forums, creating learning guides, and much more to come.
-            </Text>
-            <Square mt={4}>
-              <Button colorScheme="purple" _hover={{ bg: 'orange'}} size="lg">Claim Points</Button>
-            </Square>
-          </Box>
-        </GridItem> */}
-
+          <GridItem colSpan={1} bgGradient={boxGradient} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg'>
+            <Box p={10}>
+              <Heading size='xl'>
+                <Square>
+                  <Circle h='60px' w='60px' mb={5} borderColor={borderColor} bgColor={borderColor} borderRadius="50%" shadow='base'>
+                    <Icon as={ RiNumber2 } color={textGradient}/>
+                  </Circle>
+                </Square>
+              </Heading>
+              <Heading size="lg">
+                Claim your first DU Points!
+              </Heading>
+              <Text minH={'150px'} mt={4} fontSize='lg'>
+                You can earn more points by contributing to the University community, by supporting others with helpful posts and comments in forums, creating learning guides, and much more to come.
+              </Text>
+              <Square>
+                <ClaimPoints />
+              </Square>
+            </Box>
+          </GridItem>
       </Grid>
       </>
   );
@@ -89,19 +102,25 @@ export async function getServerSideProps(context: any) {
 
   await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
 
-  const nftList = await Moralis.EvmApi.nft.getWalletNFTs({
+  let nftList = await Moralis.EvmApi.nft.getWalletNFTs({
       chain: EvmChain.GOERLI,
       address: session.user.address,
-      tokenAddress: '0x4f2F874eb70E7B9406CCcDf1070eC7c757fe2381',
+      tokenAddress: '0x6d818827046A47db24E08d0E7799E21E384901c4',
   })
+  
+  let hasNFT = Boolean(nftList.raw.total);
 
-  if ( nftList.raw.total > 0 ) {
+  if ( hasNFT == true ) {
       return { 
           redirect: {
               destination: '/protected',
               permanent: false,
           },
       };
+  }
+
+  return {
+    props: { hasNFT },
   }
 }
 

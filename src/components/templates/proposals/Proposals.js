@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 
-const Proposal = () => {
+const Proposals = () => {
 
-  const { state: proposalDetails } = useLocation();
-  const { Moralis, isInitialized } = useMoralis();
+  // const { state: proposalDetails } = useLocation();
+  // const { Moralis, isInitialized } = useMoralis();
   const [latestVote, setLatestVote] = useState();
   const [percUp, setPercUp] = useState(0);
   const [percDown, setPercDown] = useState(0);
   const [votes, setVotes] = useState([]);
   const [sub, setSub] = useState(false);
-  const contractProcessor = useWeb3ExecuteFunction();
+  // const contractProcessor = useWeb3ExecuteFunction();
 
   useEffect(() => {
     if (isInitialized) {
@@ -68,7 +68,7 @@ const Proposal = () => {
   async function castVote(upDown) {
     
     let options = {
-      contractAddress: "0xc6c3E8d2E8126ecDbb869b5fA193d3746FBd1F63",
+      contractAddress: "0xF1B01483416f403a449cC01B72E9879194Ee0FF8",
       functionName: "voteOnProposal",
       abi: [
         {
@@ -208,4 +208,4 @@ const Proposal = () => {
   );
 };
 
-export default Proposal;
+export default Proposals;

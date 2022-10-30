@@ -16,6 +16,6 @@
     "incremental": true,
     "baseUrl": "./src"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/templates/dao/DaoHome.js", "src/components/modules/RewardButton/RewardButton.jsx", "pages/native.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/templates/dao/DaoHome.js", "src/components/modules/RewardButton/RewardButton.jsx", "pages/native.jsx", "pages/api/auth/balances.js"],
   "exclude": ["node_modules"]
 }

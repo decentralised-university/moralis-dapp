@@ -4,15 +4,11 @@ import {
     useContractWrite,
     useWaitForTransaction,
   } from 'wagmi';
-import { useDebounce } from 'usehooks-ts';
 import { Button, FormControl, FormLabel, Input, Center, Box } from '@chakra-ui/react';
-import { EvmChain } from '@moralisweb3/evm-utils';
-import Moralis  from 'moralis';
-import { ethers, utils } from 'ethers';
 
 
-export function MintNFT() {
-    const address = '0x6d818827046A47db24E08d0E7799E21E384901c4';
+export function ClaimPoints() {
+    const address = '0x41f41C3BCBfB2b5AE57c39BD654109c8eD98872f';
     // const abi = [{"inputs":[],"name":"mintPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]; 
     // const chain = EvmChain.GOERLI;
     // const functionName = 'mintPrice';
@@ -21,24 +17,20 @@ export function MintNFT() {
 
 
     const { config,
-            error: prepareError,
-            isError: isPrepareError,
+            // error: prepareError,
+            // isError: isPrepareError,
             } = usePrepareContractWrite({
                 addressOrName: address,
-                functionName: 'mint',
+                functionName: 'claimPoints',
                 contractInterface: [
                     {
-                        name: 'mint',
+                        name: 'claimPoints',
                         type: 'function',
                         stateMutability: 'payable',
                         inputs: [],
                         outputs: [],
                     },
                 ],
-                overrides: {
-                    value: utils.parseEther('0.01'),
-                    // maxFeePerGas: utils.parseEther('1.0'),
-                  },
                 onSuccess(data) {
                 console.log('Success', data)
                   },
@@ -59,12 +51,13 @@ export function MintNFT() {
   
     return (
         <Box>
-            <Button colorScheme="red" _hover={{ bg: 'orange'}} size="lg" disabled={ !write || isLoading} onClick={() => write?.() }>
-              {isLoading ? 'Minting...' : 'Get Access Pass'} 
+            <Button colorScheme="purple" _hover={{ bg: 'orange'}} size="lg" disabled={ !write || isLoading} onClick={() => write?.() }>
+              {!write ? 'You have already claimed your free points' : 'Claim your first DU Points'}
+              {isLoading ? 'Processing...' : ''} 
             </Button>
             {isSuccess && (
                 <Box>
-                    Successfully minted your NFT!
+                    You received 100 free Points!
                         <Box>
                             <a href={'https://etherscan.io/tx/${data?.hash}'}>Etherscan</a>
                         </Box>
@@ -80,4 +73,4 @@ export function MintNFT() {
     )
   }
 
-export default MintNFT;
+export default ClaimPoints;

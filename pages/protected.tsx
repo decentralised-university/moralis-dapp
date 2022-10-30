@@ -3,6 +3,7 @@ import { Default } from "components/layouts/Default";
 import { getSession, GetSessionParams } from 'next-auth/react';
 import Moralis from 'moralis';
 import { EvmChain } from '@moralisweb3/evm-utils';
+import { ClaimPoints } from "components/modules/ClaimPoints";
 
 
 function Protected({ }) {
@@ -36,6 +37,7 @@ function Protected({ }) {
                         You can earn more points by contributing to the University community, by supporting others with helpful posts and comments in forums, creating learning guides, and much more to come.
                         </Text>
                         <Square mt={4}>
+                            <ClaimPoints />
                         <Button colorScheme="purple" _hover={{ bg: 'orange'}} size="lg">Claim Points</Button>
                         </Square>
                     </Box>
@@ -49,6 +51,7 @@ export async function getServerSideProps(context: any) {
     const session = await getSession(context); 
 
     if (!session) {
+        console.log("Session returned null. Returned to home.");
         return {
             redirect: {
                 destination: '/',
@@ -58,14 +61,14 @@ export async function getServerSideProps(context: any) {
     }
 
     await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
-
     const nftList = await Moralis.EvmApi.nft.getWalletNFTs({
         chain: EvmChain.GOERLI,
         address: session.user.address,
-        tokenAddress: '0x4f2F874eb70E7B9406CCcDf1070eC7c757fe2381',
-    })
+        tokenAddress: '0x6d818827046A47db24E08d0E7799E21E384901c4',
+        })
 
     if ( nftList.raw.total == 0 ) {
+        console.log("User does not have an Access Pass. Returned to home.");
         return { 
             redirect: {
                 destination: '/',
@@ -73,6 +76,10 @@ export async function getServerSideProps(context: any) {
             },
         };
     }
+
+    return { props: {} }
 }
+
+
 
 export default Protected;

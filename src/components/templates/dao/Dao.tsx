@@ -1,20 +1,23 @@
 import {
-    Heading,
-    Box,
-    Button,
-    Grid,
-    GridItem,
-    color,
-    Square,
-    Text,
-    useColorModeValue,
+    Heading, Box, Button, Grid, GridItem, color,
+    Square, Text, useColorModeValue,
+    FormControl, FormLabel, Input, Center, AlertIcon, Alert, AlertDescription, Link
   } from '@chakra-ui/react';
   import { FC, useEffect, useState } from 'react';
   import { getSession, GetSessionParams } from 'next-auth/react';
   import { useWeb3Transfer } from 'react-moralis';
   import Moralis from 'moralis';
+  import {
+    usePrepareContractWrite,
+    useContractWrite,
+    useWaitForTransaction,
+  } from 'wagmi';
 import { IDao } from './types';
 import DaoHome from './DaoHome';
+import { CreateProposal } from 'components/modules/CreateProposal';
+import React from 'react';
+import NextLink from "next/link";
+
 
 const Dao: FC<IDao> = ({  }) => {
     useEffect(() => console.log('dao: ', Dao), [Dao]);
@@ -28,14 +31,17 @@ const Dao: FC<IDao> = ({  }) => {
         <Heading size="3xl" marginBottom={8}> 
           DAO Homepage
         </Heading>
-        <DaoHome />
+        {/* <DaoHome /> */}
         <Grid
             // h='800px'
             // w='max'
-            templateRows='repeat(3, 1fr)'
+            templateRows='repeat(2, 1fr)'
             templateColumns='repeat(3, 1fr)'
             gap={10}
         >
+            <GridItem colSpan={2} p={6} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg' color={color}>
+                <CreateProposal />
+            </GridItem>
             <GridItem colSpan={1} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg' color={color}>
             <Box p={5}>
                 <Heading fontSize='2xl'>
@@ -75,9 +81,13 @@ const Dao: FC<IDao> = ({  }) => {
                     View past proposals and voting results from the DU Community.
                     </Text>
                     <Square mt={12}>
-                        <Button colorScheme={'blue'} size={'lg'}>
-                            Click to view
-                        </Button>
+                        <NextLink href='/dao/proposals' passHref>
+                            <Link>
+                            <Button colorScheme={'blue'} size={'lg'}>
+                                Click to view
+                            </Button>
+                            </Link>
+                        </NextLink>
                     </Square>
                 </Box>
             </GridItem>
