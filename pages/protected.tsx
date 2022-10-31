@@ -6,7 +6,7 @@ import { EvmChain } from '@moralisweb3/evm-utils';
 import { ClaimPoints } from "components/modules/ClaimPoints";
 
 
-function Protected({ }) {
+function Protected() {
     const bgGridItem = useColorModeValue('yellow.100', 'red.100')
     const color = useColorModeValue('gray', 'gray')
     const borderColor = useColorModeValue('gray.200', 'gray.700')
@@ -22,8 +22,6 @@ function Protected({ }) {
             </Box>
 
             <Grid
-            // h='800px'
-            // w='max'
             templateRows='repeat(1, 1fr)'
             templateColumns='repeat(2, 1fr)'
             gap={10}
@@ -67,7 +65,7 @@ export async function getServerSideProps(context: any) {
         tokenAddress: '0x6d818827046A47db24E08d0E7799E21E384901c4',
         })
 
-    if ( nftList.raw.total == 0 ) {
+    if ( nftList.raw.total === 0 ) {
         console.log("User does not have an Access Pass. Returned to home.");
         return { 
             redirect: {

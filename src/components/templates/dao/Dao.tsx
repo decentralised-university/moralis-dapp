@@ -1,5 +1,5 @@
 import {
-    Heading, Box, Button, Grid, GridItem, color,
+    Heading, Box, Button, Grid, GridItem,
     Square, Text, useColorModeValue,
     FormControl, FormLabel, Input, Center, AlertIcon, Alert, AlertDescription, Link
   } from '@chakra-ui/react';
@@ -13,14 +13,13 @@ import {
     useWaitForTransaction,
   } from 'wagmi';
 import { IDao } from './types';
-import DaoHome from './DaoHome';
 import { CreateProposal } from 'components/modules/CreateProposal';
 import React from 'react';
 import NextLink from "next/link";
 import { ViewProposals } from '../viewproposals';
 
 
-const Dao: FC<IDao> = ({  }) => {
+const Dao: FC<IDao> = () => {
     useEffect(() => console.log('dao: ', Dao), [Dao]);
     const bgGridItem = useColorModeValue('yellow.100', 'red.100')
     const color = useColorModeValue('gray.800', 'white')
@@ -34,8 +33,6 @@ const Dao: FC<IDao> = ({  }) => {
         </Heading>
         {/* <DaoHome /> */}
         <Grid
-            // h='800px'
-            // w='max'
             templateRows='repeat(2, 1fr)'
             templateColumns='repeat(3, 1fr)'
             gap={10}

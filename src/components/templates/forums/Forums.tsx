@@ -13,7 +13,7 @@ import { ForumPost } from 'components/modules/ForumPost';
 
 
   
-const Forums: FC<IForums> = ({  }) => {
+const Forums: FC<IForums> = () => {
     useEffect(() => console.log('forums: ', Forums), [Forums]);
 
     return (

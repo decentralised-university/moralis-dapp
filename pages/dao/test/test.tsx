@@ -8,7 +8,6 @@ import { NextPage } from 'next';
 import { getSession } from 'next-auth/react';
 import { Box, Heading, Text } from "@chakra-ui/react";
 import { Default } from "components/layouts/Default";
-import { Proposals } from "components/templates/proposals";
   
 
 
@@ -26,9 +25,9 @@ export function Dao({pointsAddress, Proposals}) {
       </Heading>
     </Default>
   );
-};
+}
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps(context) {
   await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
   const session = await getSession(context);
 
@@ -38,8 +37,6 @@ export async function getServerSideProps(context: any) {
   const daoAddress = '0xF1B01483416f403a449cC01B72E9879194Ee0FF8';
   const pointsAddress= '0x41f41C3BCBfB2b5AE57c39BD654109c8eD98872f';
 
-  // const abi = []; // Add ABI
-  // const functionName = 'balanceOf';
   
   
   

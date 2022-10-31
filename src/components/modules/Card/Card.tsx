@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 
-function Card(props: { title: any; summary: any; }) {
+function Card(props: { title: string; summary: string; }) {
   const { title, summary } = props;
 
   return (

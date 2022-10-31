@@ -13,11 +13,6 @@ import { ethers, utils } from 'ethers';
 
 export function MintNFT() {
     const address = '0x6d818827046A47db24E08d0E7799E21E384901c4';
-    // const abi = [{"inputs":[],"name":"mintPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]; 
-    // const chain = EvmChain.GOERLI;
-    // const functionName = 'mintPrice';
-    // const apiKey = process.env.MORALIS_API_KEY;
-    // process.env.MORALIS_API_KEY;
 
 
     const { config,
@@ -37,7 +32,6 @@ export function MintNFT() {
                 ],
                 overrides: {
                     value: utils.parseEther('0.01'),
-                    // maxFeePerGas: utils.parseEther('1.0'),
                   },
                 onSuccess(data) {
                 console.log('Success', data)

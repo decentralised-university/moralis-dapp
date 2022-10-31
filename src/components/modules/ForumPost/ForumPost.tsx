@@ -3,7 +3,7 @@ import { RewardButton } from 'components/modules/RewardButton';
 import { BiUpvote } from "react-icons/bi";
 import { MdQuestionAnswer } from 'react-icons/md';
 
-function ForumPost(props: { question: any; topAnswer: any; numVotes: any; numAnswers: any; badge: any; badgeColor: any; }) {
+function ForumPost(props: { question: string; topAnswer: any; numVotes: string; numAnswers: string; badge: string; badgeColor: string; }) {
     const { question, topAnswer, numVotes, numAnswers, badge, badgeColor } = props;
 
     return (
@@ -46,6 +46,6 @@ function ForumPost(props: { question: any; topAnswer: any; numVotes: any; numAns
         </Stack>
     </Box>
     );
-};
+}
 
 export default ForumPost;

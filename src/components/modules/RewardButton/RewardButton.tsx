@@ -33,7 +33,7 @@ import { BiCoin } from 'react-icons/bi';
 
 
 
-const RewardButton = ({ }) => {  
+const RewardButton = () => {  
 
   const { config } = usePrepareSendTransaction({
     request: {

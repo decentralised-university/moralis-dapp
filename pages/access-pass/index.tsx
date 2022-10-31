@@ -41,8 +41,6 @@ const AccessPass = ( hasNFT: boolean ) => {
         </Heading>
 
         <Grid
-          // h='800px'
-          // w='max'
           templateRows='repeat(1, 1fr)'
           templateColumns='repeat(1, 1fr)'
           gap={10}
@@ -89,15 +87,15 @@ export async function getServerSideProps(context: any) {
 
   await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
 
-  let nftList = await Moralis.EvmApi.nft.getWalletNFTs({
+  const nftList = await Moralis.EvmApi.nft.getWalletNFTs({
       chain: EvmChain.GOERLI,
       address: session.user.address,
       tokenAddress: '0x6d818827046A47db24E08d0E7799E21E384901c4',
   })
   
-  let hasNFT = Boolean(nftList.raw.total);
+  const hasNFT = Boolean(nftList.raw.total);
 
-  if ( hasNFT == true ) {
+  if ( hasNFT === true ) {
       return { 
           redirect: {
               destination: '/protected',
