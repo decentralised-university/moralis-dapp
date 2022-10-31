@@ -52,8 +52,7 @@ export function ClaimPoints() {
     return (
         <Box>
             <Button colorScheme="purple" _hover={{ bg: 'orange'}} size="lg" disabled={ !write || isLoading} onClick={() => write?.() }>
-              {!write ? 'You have already claimed your free points' : 'Claim your first DU Points'}
-              {isLoading ? 'Processing...' : ''} 
+              {isLoading ? 'Processing...' : 'Claim your first DU Points'} 
             </Button>
             {isSuccess && (
                 <Box>

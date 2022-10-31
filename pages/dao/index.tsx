@@ -26,6 +26,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     if (!session?.user.address) {
       return { props: { error: 'Connect your wallet first' } };
     }
+
+
+
+    
   
     return {
       props: {},

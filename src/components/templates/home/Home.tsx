@@ -7,7 +7,7 @@ import { getSession } from 'next-auth/react';
 import { ClaimPoints } from 'components/modules/ClaimPoints';
 import { RiNumber1, RiNumber2 } from 'react-icons/ri';
 
-const Home = ( hasNFT: boolean ) => {
+const Home = ( hasNFT:any ) => {
   const address = '0x6d818827046A47db24E08d0E7799E21E384901c4';
   const color = useColorModeValue('gray', 'gray')
   const borderColor = useColorModeValue('gray.200', 'gray.700')
@@ -46,7 +46,7 @@ const Home = ( hasNFT: boolean ) => {
           <Box p={10}>
             <Heading size='xl'>
               <Square>
-                <Circle h='60px' w='60px' mb={5} borderColor={borderColor} bgColor={borderColor} borderRadius="50%" shadow='base'>
+                <Circle size="60px" mb={5} borderColor={borderColor} bgColor={borderColor} borderRadius="50%" shadow='base'>
                   <Icon as={ RiNumber1 } color={textGradient} size={'xl'} />
                 </Circle>
               </Square>
@@ -66,7 +66,7 @@ const Home = ( hasNFT: boolean ) => {
             <Box p={10}>
               <Heading size='xl'>
                 <Square>
-                  <Circle h='60px' w='60px' mb={5} borderColor={borderColor} bgColor={borderColor} borderRadius="50%" shadow='base'>
+                  <Circle size='60px' mb={5} borderColor={borderColor} bgColor={borderColor} borderRadius="50%" shadow='base'>
                     <Icon as={ RiNumber2 } color={textGradient}/>
                   </Circle>
                 </Square>

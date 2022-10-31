@@ -17,6 +17,7 @@ import DaoHome from './DaoHome';
 import { CreateProposal } from 'components/modules/CreateProposal';
 import React from 'react';
 import NextLink from "next/link";
+import { ViewProposals } from '../viewproposals';
 
 
 const Dao: FC<IDao> = ({  }) => {
@@ -45,15 +46,13 @@ const Dao: FC<IDao> = ({  }) => {
             <GridItem colSpan={1} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg' color={color}>
             <Box p={5}>
                 <Heading fontSize='2xl'>
-                Create a new proposal
+                View a proposal
                 </Heading>
                 <Text mt={4} fontSize='lg'>
                 Create a new proposal to be voted on by the DU Community.
                 </Text>
                 <Square mt={20}>
-                    <Button colorScheme={'orange'} size={'lg'}>
-                        Get started here
-                    </Button>
+                    <ViewProposals/>
                 </Square>
             </Box>
             </GridItem>

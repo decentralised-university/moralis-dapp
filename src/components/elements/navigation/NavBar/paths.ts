@@ -6,7 +6,7 @@ const NAV_LINKS: ISubNav[] = [
   { label: 'Home', href: '/' },
   {
     label: 'Forums',
-    href: '/forums/home',
+    href: '/forums',
   },
   {
     label: 'Your Wallet',

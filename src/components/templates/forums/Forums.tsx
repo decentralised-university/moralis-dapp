@@ -2,30 +2,32 @@ import {
   Heading,
   Box,
   Button,
-  Icon, Stack, Text, Flex, Image, Badge, Link,
+  Icon, Stack, Text, Flex, Image, Badge, Link, FormControl, FormLabel,
   useColorModeValue,
+  Input,
 } from '@chakra-ui/react';
 import NextLink from "next/link";
 import { FC, useEffect, useState } from 'react';
 import { IForums } from './types';
 import { ForumPost } from 'components/modules/ForumPost';
 
+
   
 const Forums: FC<IForums> = ({  }) => {
     useEffect(() => console.log('forums: ', Forums), [Forums]);
 
-    // const { fetch, error, isFetching } = useWeb3Transfer({
-    //   // amount: Moralis.Units.Token(20, 18),
-    //   receiver: "0x0000000000000000000000000000000000000000",
-    //   type: "erc20",
-    //   contractAddress: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-    // });
-  
     return (
       <>
-        <Heading size="md"> 
+        <Heading size="lg"> 
           Example Forum
         </Heading>
+
+        <NextLink href='/forums/newpost' passHref>
+          <Link>
+          <Button>Create a new post</Button>
+          </Link>
+        </NextLink>
+
         <Heading>
           Top Questions
         </Heading>

@@ -9,11 +9,14 @@ import getErc20LogoAddress from 'utils/getErc20LogoAddress';
 import Moralis from 'moralis';
 import { ERC20Balances, IERC20Balances } from 'components/templates/balances/ERC20';
 import { IForums } from 'components/templates/forums/types';
-import { Heading, HStack } from '@chakra-ui/react';
+import { Button, Heading, HStack } from '@chakra-ui/react';
 import { Card } from 'components/modules/Card';
 
 
 const ForumsHomePage: NextPage<IForums> = (props) => {
+
+
+
   return (
     <Default pageName="ForumsHomePage">
       {/* <ForumsHomePage {...props} /> */}
@@ -33,6 +36,5 @@ const ForumsHomePage: NextPage<IForums> = (props) => {
     </Default>
   );
 };
-
 
 export default ForumsHomePage;
