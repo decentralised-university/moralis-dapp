@@ -5,7 +5,7 @@ import { MdQuestionAnswer } from 'react-icons/md';
 
 function ForumPost(props: { question: string; topAnswer: any; numVotes: string; numAnswers: string; badge: string; badgeColor: string; }) {
     const { question, topAnswer, numVotes, numAnswers, badge, badgeColor } = props;
-
+ 
     return (
     <Box>
         <Stack mt={10} p="3" borderWidth="5px" direction="row">
