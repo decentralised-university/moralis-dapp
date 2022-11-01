@@ -18,7 +18,6 @@
     "@emotion/styled": "^11",
     "@moralisweb3/eslint-config": "^1.0.0",
     "@snapshot-labs/snapshot.js": "^0.4.40",
-    "@unlock-protocol/unlock-js": "^0.26.6",
     "@web3uikit/core": "^0.1.15",
     "@web3uikit/icons": "^0.1.12",
     "@web3uikit/web3": "^0.2.0",
