@@ -15,12 +15,11 @@ import {
 } from 'wagmi';
 
 
-const VoteOnProposal = ({ id }) => {
+function VoteOnProposal( id: any ) {
   const daoAddress = '0x87BC353c81aC86C73E18D2698978537272AF195D';
 
   // const [id, setId] = useState('');
   // const handleInputChangeId = (e: { target: { value: SetStateAction<string>; }; }) => setId(e.target.value)
-  
   const _voteYes: boolean = true;
   const _voteNo: boolean = false;
 
@@ -74,7 +73,7 @@ const VoteOnProposal = ({ id }) => {
 
   const _yes = useContractWrite(voteYes.config);
   const _yesWait = useWaitForTransaction({ hash: _yes.data?.hash });
-  
+
   const _no = useContractWrite(voteNo.config);
   const _noWait = useWaitForTransaction({ hash: _no.data?.hash });
 
@@ -82,17 +81,17 @@ const VoteOnProposal = ({ id }) => {
   return (
 
     <>
-    <FormControl>
-      {/* <FormLabel mt={4}>Input the ID of the proposal you wish to vote on:</FormLabel>
-      <Input value={id} onChange={handleInputChangeId} placeholder="Proposal ID" /> */}
-    
-      <Button m={4} colorScheme="green" _hover={{ bg: 'green' }} size="lg" disabled={!_yes.write || _yesWait.isLoading} onClick={() => _yes.write?.()}>
-        Vote For
-      </Button>
-      <Button m={4} colorScheme="red" _hover={{ bg: 'red' }} size="lg" disabled={!_no.write || _noWait.isLoading} onClick={() => _no.write?.()}>
-        Vote Against
-      </Button>
-    </FormControl>
+      <FormControl>
+        {/* <FormLabel mt={4}>Input the ID of the proposal you wish to vote on:</FormLabel>
+            <Input value={id} onChange={handleInputChangeId} placeholder="Proposal ID" /> */}
+
+        <Button m={4} colorScheme="green" _hover={{ bg: 'green' }} size="lg" disabled={!_yes.write || _yesWait.isLoading} onClick={() => _yes.write?.()}>
+          Vote For
+        </Button>
+        <Button m={4} colorScheme="red" _hover={{ bg: 'red' }} size="lg" disabled={!_no.write || _noWait.isLoading} onClick={() => _no.write?.()}>
+          Vote Against
+        </Button>
+      </FormControl>
 
 
     </>
