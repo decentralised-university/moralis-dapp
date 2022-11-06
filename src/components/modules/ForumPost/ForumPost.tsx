@@ -1,7 +1,7 @@
 import { Box, Stack, Flex, Text, Badge, Spacer } from "@chakra-ui/react";
-import { RewardButton } from 'components/modules/RewardButton';
 import { BiUpvote } from "react-icons/bi";
 import { MdQuestionAnswer } from 'react-icons/md';
+import { ReactButton } from "../ReactButton";
 
 function ForumPost(props: { question: string; topAnswer: any; numVotes: string; numAnswers: string; badge: string; badgeColor: string; }) {
     const { question, topAnswer, numVotes, numAnswers, badge, badgeColor } = props;
@@ -28,7 +28,7 @@ function ForumPost(props: { question: string; topAnswer: any; numVotes: string; 
                     </Badge>
                 </Flex>
                 <Flex mt={6}>
-                    <RewardButton />
+                    <ReactButton />
                 </Flex>
             </Box>
             <Box w="900px" mx="20px" padding={3}>

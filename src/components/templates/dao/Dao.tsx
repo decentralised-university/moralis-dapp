@@ -1,6 +1,6 @@
 import {
     Heading, Box, Button, Grid, GridItem,
-    Square, Text, useColorModeValue,
+    Square, Text, useColorModeValue, HStack,
     FormControl, FormLabel, Input, Center, AlertIcon, Alert, AlertDescription, Link
   } from '@chakra-ui/react';
   import { FC, useEffect, useState } from 'react';
@@ -17,6 +17,7 @@ import { CreateProposal } from 'components/modules/CreateProposal';
 import React from 'react';
 import NextLink from "next/link";
 import { ViewProposals } from '../viewproposals';
+import { VoteOnProposal } from 'components/modules/VoteOnProposal';
 
 
 const Dao: FC<IDao> = () => {
@@ -28,63 +29,29 @@ const Dao: FC<IDao> = () => {
 
     return (
         <>
-        <Heading size="3xl" marginBottom={8}> 
+        <Heading size="2xl" marginBottom={8}> 
           DAO Homepage
         </Heading>
         {/* <DaoHome /> */}
         <Grid
-            templateRows='repeat(2, 1fr)'
-            templateColumns='repeat(3, 1fr)'
+            templateRows='repeat(3, 1fr)'
+            templateColumns='repeat(2, 1fr)'
             gap={10}
         >
             <GridItem colSpan={2} p={6} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg' color={color}>
                 <CreateProposal />
             </GridItem>
-            <GridItem colSpan={1} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg' color={color}>
-            <Box p={5}>
-                <Heading fontSize='2xl'>
-                View a proposal
-                </Heading>
-                <Text mt={4} fontSize='lg'>
-                Create a new proposal to be voted on by the DU Community.
-                </Text>
-                <Square mt={20}>
-                    <ViewProposals/>
-                </Square>
-            </Box>
-            </GridItem>
-            <GridItem colSpan={1} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg' color={color}>
+
+            <GridItem colSpan={2} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg' color={color}>
                 <Box p={5}>
                     <Heading fontSize='2xl'>
                     Vote on active proposals
                     </Heading>
+                    <HStack></HStack>
                     <Text mt={4} fontSize='lg'>
                     Cast your vote on active proposals from the DU Community.
                     </Text>
-                    <Square mt={6}>
-                        <Button colorScheme={'green'} size={'lg'}>
-                            Cast your vote
-                        </Button>
-                    </Square>
-                </Box>
-            </GridItem>
-            <GridItem colSpan={1} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg' color={color}>
-                <Box p={5}>
-                    <Heading fontSize='2xl'>
-                    View DAO events history
-                    </Heading>
-                    <Text mt={4} fontSize='lg'>
-                    View past proposals and voting results from the DU Community.
-                    </Text>
-                    <Square mt={12}>
-                        <NextLink href='/dao/proposals' passHref>
-                            <Link>
-                            <Button colorScheme={'blue'} size={'lg'}>
-                                Click to view
-                            </Button>
-                            </Link>
-                        </NextLink>
-                    </Square>
+                    <VoteOnProposal />
                 </Box>
             </GridItem>
         </Grid>

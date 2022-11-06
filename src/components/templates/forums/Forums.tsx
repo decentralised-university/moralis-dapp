@@ -24,8 +24,8 @@ const Forums: FC<IForums> = () => {
 
         <NextLink href='/forums/newpost' passHref>
           <Link>
-          <Button>Create a new post</Button>
-          </Link>
+          <Button my={4} colorScheme={"green"}>Create a new post</Button>
+          </Link> 
         </NextLink>
 
         <Heading>

@@ -1,12 +1,11 @@
 import { Default } from 'components/layouts/Default';
-import { Forums } from 'components/templates/forums';
 import { NextPage } from 'next';
 import { IForums } from 'components/templates/forums/types';
 import { Heading, Text, HStack, Flex, Badge, Box, Spacer } from '@chakra-ui/react';
-import { ForumPost } from 'components/modules/ForumPost';
 import { RewardButton } from 'components/modules/RewardButton';
 import { BiUpvote } from "react-icons/bi";
 import { MdQuestionAnswer } from 'react-icons/md';
+import { ReactButton } from 'components/modules/ReactButton';
 
 
 const ExamplePost: NextPage<IForums> = (props) => {
@@ -36,7 +35,7 @@ const ExamplePost: NextPage<IForums> = (props) => {
             </Flex>
             <Spacer/>
             <Flex>
-                <RewardButton/>
+                <ReactButton _id={1} _vote={true}/>
             </Flex>
         </HStack>
 
@@ -50,7 +49,7 @@ const ExamplePost: NextPage<IForums> = (props) => {
             <Text mb={5} fontSize=' xl'>
                 Once you own an Access Pass, you will be able to participate in the governance of DU. Head over to the DAO page on this website using the navbar at the top. This is where you can create new proposals, vote on active proposals and view the results of completed voting processes.
             </Text>
-            <RewardButton/>
+            <ReactButton/>
         </Box>
     </Default>
   );

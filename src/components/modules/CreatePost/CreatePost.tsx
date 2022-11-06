@@ -5,7 +5,6 @@ import {
   Icon,
   Button,
   Box,
-  Heading,
 } from '@chakra-ui/react';
 import React, { SetStateAction, useState } from 'react';
 import {
@@ -15,20 +14,29 @@ import {
 } from 'wagmi';
 
 
-function CreateProposal() {
-  const daoAddress = '0x87BC353c81aC86C73E18D2698978537272AF195D';
+function CreatePost() {
+  const pointsAddress = '0x41f41C3BCBfB2b5AE57c39BD654109c8eD98872f';
   const [description, setDescription] = useState('');
-  const handleInputChangeDescription = (e: { target: { value: SetStateAction<string>; }; }) => setDescription(e.target.value);
+  const handleInputChangeTitle = (e: { target: { value: SetStateAction<string>; }; }) => setTitle(e.target.value)
 
-  const { config } = usePrepareContractWrite({
-    addressOrName: daoAddress,
-    functionName: 'createProposal',
+
+  const [title, setTitle] = useState('');
+  const handleInputChangeDescription = (e: { target: { value: SetStateAction<string>; }; }) => setDescription(e.target.value)
+
+
+  const { config, 
+          error: prepareError, 
+          isError: isPrepareError,
+        } = usePrepareContractWrite({
+    addressOrName: pointsAddress,
+    functionName: 'createPost',
     contractInterface: [
       {
-        name: 'createProposal',
+        name: 'createPost',
         type: 'function',
         stateMutability: 'nonpayable',
         inputs: [
+          { "internalType": "string", "name": "_title", "type": "string" },
           { "internalType": "string", "name": "_description", "type": "string" },
         ],
         outputs: [],
@@ -40,7 +48,7 @@ function CreateProposal() {
     onError(data) {
       console.log('An error occurred', data);
     },
-    args: [description],
+    args: [title, description],
   });
 
   const { data, error, isError, write } = useContractWrite(config);
@@ -49,24 +57,21 @@ function CreateProposal() {
     hash: data?.hash,
   });
 
- 
+
   return (
 
-    <>
-    <Heading>
-      Submit a new proposal
-    </Heading>
     <FormControl>
+      <FormLabel mt={4}>Add a title to your post below:</FormLabel>
+      <Input value={title} onChange={handleInputChangeTitle} placeholder="Title"/>
       <FormLabel mt={4}>Add the contents of the post below:</FormLabel>
-      <Input value={description} onChange={handleInputChangeDescription} placeholder="This proposal is about..." />
+      <Input value={description} onChange={handleInputChangeDescription} placeholder="The main part of your post goes here..."/>
       <Button mt={4} colorScheme="blue" _hover={{ bg: 'orange' }} size="lg" disabled={!write || isLoading} onClick={() => write?.()}>
         Post
       </Button>
     </FormControl>
-    </>
 
 
   );
 }
 
-export default CreateProposal;
+export default CreatePost;
