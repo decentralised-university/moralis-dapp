@@ -20,8 +20,8 @@ function VoteOnProposal( id: any ) {
 
   // const [id, setId] = useState('');
   // const handleInputChangeId = (e: { target: { value: SetStateAction<string>; }; }) => setId(e.target.value)
-  const _voteYes: boolean = true;
-  const _voteNo: boolean = false;
+  const _voteYes = true;
+  const _voteNo = false;
 
   const voteYes = usePrepareContractWrite({
     addressOrName: daoAddress,
