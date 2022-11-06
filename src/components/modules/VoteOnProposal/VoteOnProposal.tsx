@@ -15,11 +15,11 @@ import {
 } from 'wagmi';
 
 
-function VoteOnProposal() {
+const VoteOnProposal = ({ id }) => {
   const daoAddress = '0x87BC353c81aC86C73E18D2698978537272AF195D';
 
-  const [id, setId] = useState('');
-  const handleInputChangeId = (e: { target: { value: SetStateAction<string>; }; }) => setId(e.target.value)
+  // const [id, setId] = useState('');
+  // const handleInputChangeId = (e: { target: { value: SetStateAction<string>; }; }) => setId(e.target.value)
   
   const _voteYes: boolean = true;
   const _voteNo: boolean = false;
@@ -83,8 +83,9 @@ function VoteOnProposal() {
 
     <>
     <FormControl>
-      <FormLabel mt={4}>Input the ID of the proposal you wish to vote on:</FormLabel>
-      <Input value={id} onChange={handleInputChangeId} placeholder="Proposal ID" />
+      {/* <FormLabel mt={4}>Input the ID of the proposal you wish to vote on:</FormLabel>
+      <Input value={id} onChange={handleInputChangeId} placeholder="Proposal ID" /> */}
+    
       <Button m={4} colorScheme="green" _hover={{ bg: 'green' }} size="lg" disabled={!_yes.write || _yesWait.isLoading} onClick={() => _yes.write?.()}>
         Vote For
       </Button>
@@ -92,6 +93,8 @@ function VoteOnProposal() {
         Vote Against
       </Button>
     </FormControl>
+
+
     </>
   );
 }

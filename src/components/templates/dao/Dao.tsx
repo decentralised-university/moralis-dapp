@@ -45,15 +45,27 @@ const Dao: FC<IDao> = () => {
             <GridItem colSpan={2} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg' color={color}>
                 <Box p={5}>
                     <Heading fontSize='2xl'>
-                    Vote on active proposals
+                    Active Proposal: Raise teacher base salaries to £50K.
                     </Heading>
-                    <HStack></HStack>
                     <Text mt={4} fontSize='lg'>
-                    Cast your vote on active proposals from the DU Community.
+                    Cast your vote on this proposal:
                     </Text>
-                    <VoteOnProposal />
+                    <VoteOnProposal id={1}  />
                 </Box>
             </GridItem>
+
+            <GridItem colSpan={2} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg' color={color}>
+                <Box p={5}>
+                    <Heading fontSize='2xl'>
+                    Active Proposal: Invest £15 million in new student accommodation in Redland.
+                    </Heading>
+                    <Text mt={4} fontSize='lg'>
+                    Cast your vote on this proposal:
+                    </Text>
+                    <VoteOnProposal id={2}  />
+                </Box>
+            </GridItem>
+
         </Grid>
         </>
     );
