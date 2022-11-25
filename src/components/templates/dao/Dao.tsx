@@ -45,12 +45,12 @@ const Dao: FC<IDao> = () => {
             <GridItem colSpan={2} borderRadius='md' border="2px" borderColor={borderColor} shadow='dark-lg' color={color}>
                 <Box p={5}>
                     <Heading fontSize='2xl'>
-                    Active Proposal: Raise teacher base salaries to £50K.
+                    Active Proposal: Give all new students unlimited free pizza for their first week at university.
                     </Heading>
                     <Text mt={4} fontSize='lg'>
                     Cast your vote on this proposal:
                     </Text>
-                    <VoteOnProposal id={1}  />
+                    <VoteOnProposal id={6}  />
                 </Box>
             </GridItem>
 
