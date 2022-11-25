@@ -28,8 +28,8 @@ import { parseEther } from 'ethers/lib/utils';
 import { BiCoin } from 'react-icons/bi';
 
 
-
-function ReactButton( _id: any, _vote: boolean ) {
+// _id: any, _vote: boolean
+function ReactButton( ) {
   const pointsAddress = '0x41f41C3BCBfB2b5AE57c39BD654109c8eD98872f';
 
   const { config, error: prepareError, isError: isPrepareError,
@@ -57,7 +57,7 @@ function ReactButton( _id: any, _vote: boolean ) {
     onSettled(data, error) {
       console.log('Settled', { data, error });
     },
-    args: [_id, _vote],
+    args: [1, true],
   });
 
   const { data, error, isError, write } = useContractWrite(config);
