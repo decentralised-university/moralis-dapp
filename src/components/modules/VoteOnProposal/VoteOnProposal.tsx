@@ -15,7 +15,7 @@ import {
 } from 'wagmi';
 
 
-function VoteOnProposal( id: any ) {
+function VoteOnProposal(  ) {
   const daoAddress = '0x87BC353c81aC86C73E18D2698978537272AF195D';
 
   // const [id, setId] = useState('');
@@ -44,7 +44,7 @@ function VoteOnProposal( id: any ) {
     onError(data) {
       console.log('An error occurred', data);
     },
-    args: [id, _voteYes],
+    args: [6, _voteYes],
   });
 
   const voteNo = usePrepareContractWrite({
@@ -68,7 +68,7 @@ function VoteOnProposal( id: any ) {
     onError(data) {
       console.log('An error occurred', data);
     },
-    args: [id, _voteNo],
+    args: [6, _voteNo],
   });
 
   const _yes = useContractWrite(voteYes.config);

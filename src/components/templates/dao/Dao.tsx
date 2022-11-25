@@ -50,7 +50,8 @@ const Dao: FC<IDao> = () => {
                     <Text mt={4} fontSize='lg'>
                     Cast your vote on this proposal:
                     </Text>
-                    <VoteOnProposal id={6}  />
+                    {/* <VoteOnProposal id={6}  /> */}
+                    <VoteOnProposal />
                 </Box>
             </GridItem>
 
@@ -62,7 +63,8 @@ const Dao: FC<IDao> = () => {
                     <Text mt={4} fontSize='lg'>
                     Cast your vote on this proposal:
                     </Text>
-                    <VoteOnProposal id={2}  />
+                    {/* <VoteOnProposal id={2}  /> */}
+                    <VoteOnProposal />
                 </Box>
             </GridItem>
 
