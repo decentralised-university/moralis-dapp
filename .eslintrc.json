@@ -5,5 +5,6 @@
     "@typescript-eslint/no-unused-vars": "off",
     "no-template-curly-in-string": "off",
     "@typescript-eslint/no-explicit-any": "off"
+    "etc/no-commented-out-code": "off"
   }
 }
